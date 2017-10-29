@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+#DH_VERBOSE = 1
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/default.mk
+
+PYTHON3S:=$(shell py3versions -vr)
+
+export PYBUILD_NAME=u2flib_host
+export PYBUILD_DISABLE=test
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_install:
+	#set -e ; for pyvers in $(PYTHONS); do \
+ 		python$$pyvers setup.py install --install-layout=deb \
+ 			--root $(CURDIR)/debian/python-u2flib-host; \
+ 	done
+	set -e ; for pyvers in $(PYTHON3S); do \
+		python$$pyvers setup.py install --install-layout=deb \
+			--root $(CURDIR)/debian/python3-u2flib-host; \
+	done
+	rm -rf $(CURDIR)/debian/python*-u2flib-host/usr/lib/python*/dist-packages/*.pth
+	rm -rf $(CURDIR)/debian/python*-u2flib-host/usr/lib/python3.*

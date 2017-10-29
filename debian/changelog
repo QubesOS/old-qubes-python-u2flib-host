@@ -1,0 +1,5 @@
+python-u2flib-host (3.0.2) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Wojtek Porczyk <woju@invisiblethingslab.com>  Fri, 27 Oct 2017 22:29:46 +0200
