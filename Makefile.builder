@@ -1,4 +1,3 @@
-ifneq ($(PACKAGE_SET),dom0)
-DEBIAN_BUILD_DIRS := debian
-endif
+DEBIAN_BUILD_DIRS.vm-stretch := debian
+DEBIAN_BUILD_DIRS := $(DEBIAN_BUILD_DIRS.$(PACKAGE_SET)-$(DIST))
 # vim: ft=make
