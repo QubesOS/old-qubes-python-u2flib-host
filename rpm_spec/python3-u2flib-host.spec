@@ -11,6 +11,7 @@ URL:		https://github.com/Yubico/python-u2flib-host
 BuildArch:  noarch
 
 BuildRequires:	python3-devel
+Requires:	python3-hidapi
 
 %description
 Pure Python implementation of U2F library for host, i.e. for communication
